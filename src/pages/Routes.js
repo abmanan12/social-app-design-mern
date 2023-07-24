@@ -4,11 +4,12 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import Home from './Home/Home'
 import Auth from './Auth/Auth'
+import Profile from './Profile/Profile'
 import { useSelector } from 'react-redux'
 
 export default function Index() {
 
-    const { userExist } = useSelector(state => state.authReducer.authData)
+    const { userExist } = useSelector(state => state.authReducer?.authData)
 
     return (
         <>
@@ -17,7 +18,9 @@ export default function Index() {
                 <Routes>
                     <Route path='/' element={userExist ? <Home /> : <Auth />} />
 
-                    <Route path='/home' element={<Home />} />
+                    <Route path='/home' element={userExist ? <Home /> : <Auth />} />
+
+                    <Route path='/profile/:id' element={userExist ? <Profile /> : <Navigate to='/home' />} />
 
                     <Route path="*" element={<div style={{
                         height: "calc(100vh - 32px)", display: "flex", flexDirection: 'column',

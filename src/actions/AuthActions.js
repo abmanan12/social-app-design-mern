@@ -31,3 +31,7 @@ export const login = (formData) => async (dispatch) => {
     }
 
 }
+
+export const logout = () => async (dispatch) => {
+        dispatch({ type: 'SET_LOGOUT' })
+}

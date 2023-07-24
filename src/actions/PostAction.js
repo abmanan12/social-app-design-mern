@@ -15,3 +15,13 @@ export const getTimelinePosts = (id) => async (dispatch) => {
         dispatch({ type: "RETREIVING_FAIL" });
     }
 }
+
+export const likePost = (id, userId) => async (dispatch) => {
+
+    try {
+        await axios.put(`${URL}/${id}/like`, { userId: userId })
+    }
+    catch (error) {
+        console.log(error);
+    }
+}

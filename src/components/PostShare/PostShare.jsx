@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 
 import "./PostShare.css";
 import { useDispatch, useSelector } from "react-redux";
-import ProfileImage from "../../img/profileImg.jpg";
 
 import { UilScenery } from "@iconscout/react-unicons";
 import { UilPlayCircle } from "@iconscout/react-unicons";
@@ -18,7 +17,8 @@ const PostShare = () => {
   const imageRef = useRef();
   const dispatch = useDispatch()
   const [image, setImage] = useState(null);
-  const { userExist } = useSelector(state => state.authReducer.authData)
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { userExist } = useSelector(state => state.authReducer?.authData)
   const uploading = useSelector(state => state.postReducer.uploading)
 
   const onImageChange = e => {
@@ -32,7 +32,7 @@ const PostShare = () => {
     e.preventDefault()
 
     const newPost = {
-      userId: userExist._id,
+      userId: userExist?._id,
       description: desc.current.value,
     };
 
@@ -64,7 +64,11 @@ const PostShare = () => {
   return (
     <div className="PostShare">
 
-      <img src={ProfileImage} alt="" />
+      <img src={
+        userExist?.profilePicture
+          ? serverPublic + userExist?.profilePicture
+          : serverPublic + "defaultProfile.png"}
+        alt="ProfileImage" />
 
       <div>
 

@@ -11,7 +11,7 @@ export default function ProfileSide() {
         <>
             <div className='ProfileSide'>
                 <LogoSearch />
-                <ProfileCard />
+                <ProfileCard location='homepage' />
                 <FollowersCard />
             </div>
         </>

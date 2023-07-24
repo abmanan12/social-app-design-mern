@@ -1,7 +1,7 @@
 .profile-pics {
     display: flex !important;
     align-items: center !important;
-    gap: 30% !important;
+    /* gap: 30% !important; */
 }
 
 .profile-pics>span {
@@ -10,6 +10,6 @@
     gap: 8px;
 }
 
-.profile-pics>span>input{
+/* .profile-pics>span>input{
     display: none;
-}
+} */
