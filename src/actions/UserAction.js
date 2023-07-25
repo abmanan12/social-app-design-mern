@@ -42,3 +42,21 @@ export const updateUser = (id, userData) => async (dispatch) => {
     }
 
 }
+
+export const followUser = (id, user) => async (dispatch) => {
+    try {
+        dispatch({ type: 'FOLLOW_USER', data: id })
+        await axios.put(`${URL}/${id}/follow`, user)
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const unfollowUser = (id, user) => async (dispatch) => {
+    try {
+        dispatch({ type: 'UNFOLLOW_USER', data: id })
+        await axios.put(`${URL}/${id}/unfollow`, user)
+    } catch (error) {
+        console.log(error);
+    }
+}

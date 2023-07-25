@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className='Home'>
       <ProfileSide />
-      <PostSide />
+      <PostSide  userPost='followingUser' />
       <RightSide />
     </div>
   )

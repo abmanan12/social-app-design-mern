@@ -4,12 +4,13 @@ import './PostSide.css'
 import Posts from '../Posts/Posts'
 import PostShare from '../PostShare/PostShare'
 
-const PostSide = () => {
+const PostSide = ({ userPost }) => {
+  
   return (
-   <div className="PostSide">
-       <PostShare/>
-       <Posts/>
-   </div>
+    <div className="PostSide">
+      <PostShare />
+      <Posts userPost={userPost} />
+    </div>
   )
 }
 

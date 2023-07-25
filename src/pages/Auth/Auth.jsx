@@ -61,7 +61,7 @@ const Auth = () => {
       <div className="a-right">
         <form className="infoForm" onSubmit={handleSubmit}>
 
-          <h3>Sign up</h3>
+          <h3>{isSignUp ? 'Sign up' : 'Sign In'}</h3>
 
           {isSignUp &&
             <div>

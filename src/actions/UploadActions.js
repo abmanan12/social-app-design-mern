@@ -12,12 +12,12 @@ export const uploadImage = (data) => async (dispatch) => {
 }
 
 
-export const uploadPost = (data) => async (dispatch) => {
+export const uploadPost = (post) => async (dispatch) => {
 
     dispatch({ type: "UPLOAD_START" });
 
     try {
-        await axios.post(`${URL}/post`, data)
+        const { data } = await axios.post(`${URL}/post`, post)
         dispatch({ type: "UPLOAD_SUCCESS", data: data });
     }
     catch (error) {

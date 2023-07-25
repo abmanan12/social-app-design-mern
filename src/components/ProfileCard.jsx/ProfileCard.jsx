@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const ProfileCard = ({ location }) => {
 
   const user = useSelector(state => state.authReducer)
-  const {userExist} = user?.authData
+  const { userExist } = user?.authData
   const posts = useSelector((state) => state.postReducer.posts)
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -41,13 +41,13 @@ const ProfileCard = ({ location }) => {
         <hr />
         <div>
           <div className="follow">
-            <span>{userExist?.followers.length}</span>
-            <span>Followers</span>
+            <span>{userExist?.following.length}</span>
+            <span>Following</span>
           </div>
           <div className="vl"></div>
           <div className="follow">
-            <span>{userExist?.following.length}</span>
-            <span>Following</span>
+            <span>{userExist?.followers.length}</span>
+            <span>Followers</span>
           </div>
 
           {location === "profilePage" && (

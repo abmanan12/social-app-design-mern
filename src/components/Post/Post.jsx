@@ -22,6 +22,7 @@ const Post = ({ data }) => {
     liked ? setLikesLength((prev) => prev - 1) : setLikesLength((prev) => prev + 1)
   }
 
+
   return (
     <div className="Post">
       <img src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : ''} alt="" />
@@ -32,7 +33,7 @@ const Post = ({ data }) => {
         <img src={Share} alt="" />
       </div>
 
-      <span style={{ color: "var(--gray)", fontSize: '12px' }}>{likesLength} likes</span>
+      <span style={{ color: "var(--gray)", fontSize: '12px' }}>{data.likes ? likesLength : 0} likes</span>
 
       <div className="detail">
         <span><b>{data.name}</b></span>

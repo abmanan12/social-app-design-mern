@@ -41,6 +41,14 @@ const authReducer = (state = initalState, action) => {
             return { ...state, loading: false, updatingLoading: false, error: true }
 
 
+        case 'FOLLOW_USER':
+            return { ...state, authData: { ...state.authData, userExist: { ...state.authData.userExist, following: [...state.authData.userExist.following, action.data] } } }
+
+
+        case 'UNFOLLOW_USER':
+            return { ...state, authData: { ...state.authData, userExist: { ...state.authData.userExist, following: [...state.authData.userExist.following.filter(id => id !== action.data)] } } }
+
+
         default:
             return state;
     }

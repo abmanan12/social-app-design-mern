@@ -13,7 +13,7 @@ const Profile = () => {
 
       <div className="Profile-center">
         <ProfileCard location='profilePage' />
-        <PostSide />
+        <PostSide userPost='himself' />
       </div>
 
       <RightSide />

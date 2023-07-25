@@ -4,13 +4,15 @@ import './Posts.css'
 import Post from '../Post/Post'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTimelinePosts } from '../../actions/PostAction'
+import { useParams } from 'react-router-dom'
 
-const Posts = () => {
+const Posts = ({ userPost }) => {
 
   const dispatch = useDispatch()
+  const params = useParams()?.id
   const user = useSelector(state => state.authReducer)
-  const {userExist} = user?.authData
-  const { posts, loading } = useSelector(state => state.postReducer)
+  const { userExist } = user?.authData
+  let { posts, loading } = useSelector(state => state.postReducer)
 
   useEffect(() => {
 
@@ -18,12 +20,19 @@ const Posts = () => {
 
   }, [])
 
+
+  if (userPost === 'himself') {
+    posts = posts.filter(post => post.userId === params)
+  }
+
   return (
     <div className="Posts">
-      { loading ? 'Fetching Posts ...'
-        : posts?.map((post, id) => {
-          return <Post data={post} id={id} />
-        })}
+      {loading ? ('Fetching Posts ...')
+        : posts.length === 0
+          ? (<p style={{ textAlign: 'center' }}>No posts</p>)
+          : (posts.map((post, id) => {
+            return <Post data={post} id={id} key={id} />;
+          }))}
     </div>
   )
 }
