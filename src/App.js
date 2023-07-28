@@ -2,7 +2,6 @@ import "./App.css"
 
 import { Provider } from 'react-redux';
 
-// import Auth from "./pages/Auth/Auth";
 import Routes from './pages/Routes'
 import store from "./store/ReduxStore";
 

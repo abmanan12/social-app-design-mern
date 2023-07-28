@@ -6,6 +6,7 @@ import Home from './Home/Home'
 import Auth from './Auth/Auth'
 import Profile from './Profile/Profile'
 import { useSelector } from 'react-redux'
+import Chat from './Chat/Chat'
 
 export default function Index() {
 
@@ -21,6 +22,8 @@ export default function Index() {
                     <Route path='/home' element={userExist ? <Home /> : <Auth />} />
 
                     <Route path='/profile/:id' element={userExist ? <Profile /> : <Navigate to='/home' />} />
+
+                    <Route path='/chat' element={userExist ? <Chat /> : <Navigate to='/home' />} />
 
                     <Route path="*" element={<div style={{
                         height: "calc(100vh - 32px)", display: "flex", flexDirection: 'column',
